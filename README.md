@@ -24,6 +24,7 @@
 * `data/`: 정제 및 가공이 완료된 최종 산출물 디렉토리 (※ 용량 제한으로 GitHub 업로드 시 제외될 수 있음)
   - `data/db/`: 완성된 SQLite 데이터베이스 파일 저장 (`seoul_bike_2018.sqlite` 등)
   - `data/csv/`: 월별로 1/100 추출 및 정제된 이력 데이터 CSV 파일 저장 (`cp949`, `utf8` 인코딩별 제공)
+  - `data/excel/`: Power BI 및 엑셀 실습 편의를 위해 1% 추출본을 월별 및 단일 통합본(`.xlsx`)으로 제공
 * `raw/`: 가공 전 원본 CSV, ZIP 데이터 및 공간 데이터(`seoul_municipalities_geo_simple.json`)
 
 ## 🛠️ 활용 방법 (How to use)
@@ -41,9 +42,8 @@
 * `PRAGMA foreign_keys = ON;` 명령어를 통해 제약조건을 활성화하고, 1,000만 건이 넘는 대용량 테이블에서 인덱스(Index) 유무에 따른 `JOIN`, `GROUP BY`, `Window Function` 쿼리의 성능(Execution Plan) 차이를 직접 체감해 보세요.
 
 ### 3. 기초 데이터 분석 및 공간 시각화 실습 (Pandas, Excel, Folium)
-* `data/csv/` 폴더에 제공되는 월별 1/100 축소 데이터(`seoul_bike_YYYYMM.csv`)를 활용하여 가벼운 환경에서 실습을 진행합니다.
-* **엑셀 사용자**: 한글 깨짐 방지를 위해 `cp949` 폴더의 데이터를 활용하세요.
-* **파이썬(Pandas) 사용자**: 호환성이 높은 `utf8` 폴더의 데이터를 활용하여 시계열 데이터 분석을 진행해 보세요. 특히 **Folium** 등의 라이브러리와 `seoul_municipalities_geo_simple.json` 공간 데이터를 결합하면, 자전거 대여소의 위경도 좌표를 활용하여 지도 위에 구역별 자전거 트래픽을 표현하는 멋진 공간 시각화 포트폴리오를 만들 수 있습니다.
+* `data/excel/` 폴더에 제공되는 **전체 통합 엑셀 파일(`seoul_bike_2018_1pct_merged.xlsx`)**을 활용하면, ODBC 드라이버 설치 없이 즉시 Power BI나 엑셀에서 약 10만 건의 데이터를 불러와 실습을 진행할 수 있습니다.
+* 파이썬(Pandas) 활용 시에는 `data/csv/utf8/`의 파일들을 불러와 시계열 데이터 분석을 진행해 보세요. 특히 **Folium** 등의 라이브러리와 `seoul_municipalities_geo_simple.json` 공간 데이터를 결합하면, 자전거 대여소의 위경도 좌표를 활용하여 지도 위에 구역별 자전거 트래픽을 표현하는 멋진 공간 시각화 포트폴리오를 만들 수 있습니다.
 
 ### 4. Python 데이터 엔지니어링 실습
 * `scripts/` 내부의 파이프라인 코드(`build_db.py`, `extract_csv_1pct.py`)를 참고하여 대용량 데이터를 메모리 오버플로우 없이 가공(Chunking)하는 기법을 배울 수 있습니다.
