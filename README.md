@@ -20,7 +20,7 @@
 
 ## 📂 저장소 구조
 * `docs/`: 데이터베이스 스키마(DDL) 설계도 및 데이터 파이프라인 구축 과정을 담은 명세서
-* `scripts/`: 원본 데이터로부터 SQLite DB 구축, 샘플링 및 CSV 추출을 수행하는 Python ETL 파이프라인 코드
+* `scripts/`: 원본 데이터로부터 SQLite DB 구축, 5% 샘플링 및 CSV 추출을 수행하는 Python ETL 파이프라인 코드
 * `data/`: 정제 및 가공이 완료된 최종 산출물 디렉토리 (※ 용량 제한으로 GitHub 업로드 시 제외될 수 있음)
   - `data/db/`: 완성된 SQLite 데이터베이스 파일 저장 (`seoul_bike_2018.sqlite` 등)
   - `data/csv/`: 월별로 1/100 추출 및 정제된 이력 데이터 CSV 파일 저장 (`cp949`, `utf8` 인코딩별 제공)
@@ -29,7 +29,7 @@
 ## 🛠️ 활용 방법 (How to use)
 
 ### 1. Power BI 시각화 실습
-* 추출된 `data/db/seoul_bike_2018_10pct.sqlite` (전체 이력의 10% 계통 추출 샘플, 약 180MB) 파일을 Power BI로 불러옵니다. (ODBC 드라이버 필요)
+* 추출된 `data/db/seoul_bike_2018_5pct.sqlite` (전체 이력의 5% 계통 추출 샘플, 약 90MB) 파일을 Power BI로 불러옵니다. (ODBC 드라이버 필요)
 * 대여일자(`rent_date`)를 기준으로 날씨(`weather`) 테이블과, 대여소번호(`rent_station_no`)를 기준으로 대여소(`stations`) 테이블과 조인(Relationship)을 맺습니다.
 * **추천 분석 과제**: 
   - 비 오는 날과 맑은 날의 대여량 차이 비교

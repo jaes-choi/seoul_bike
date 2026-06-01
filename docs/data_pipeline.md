@@ -5,7 +5,7 @@
 
 * **스크립트 구성 (총 2개 파일로 단순화)**:
   1. `build_db.py`: 원본 CSV/ZIP 데이터를 읽고, 클렌징 및 전처리하여 통합된 메인 데이터베이스(`seoul_bike_2018.sqlite`)를 생성합니다.
-  2. `create_sample_db.py`: Power BI 등 대시보드 실습에 최적화된 1/10 크기의 샘플 데이터베이스(`seoul_bike_2018_10pct.sqlite`)를 계통 추출(Systematic Sampling) 기법으로 생성합니다.
+  2. `create_sample_db.py`: Power BI 등 대시보드 실습에 최적화된 5% 크기의 샘플 데이터베이스(`seoul_bike_2018_5pct.sqlite`)를 계통 추출(Systematic Sampling) 기법으로 생성합니다.
 
 ---
 
@@ -64,4 +64,4 @@ CREATE INDEX idx_rent_date ON rentals(rent_date);
 
 ### 최종 산출 파일
 1. **`seoul_bike_2018.sqlite`**: 모든 전처리가 완료된 원본 데이터 100% 통합 DB (용량 약 1.8GB)
-2. **`seoul_bike_2018_10pct.sqlite`**: Power BI 실습 등을 위한 1/10 계통 추출(시간순) DB (용량 약 180MB)
+2. **`seoul_bike_2018_5pct.sqlite`**: Power BI 실습 등을 위한 5% 계통 추출(시간순) DB (용량 약 90MB)

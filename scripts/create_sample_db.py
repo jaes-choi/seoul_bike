@@ -1,9 +1,9 @@
 import sqlite3
 import os
 
-SOURCE_DB = '../data/seoul_bike_2018.sqlite'
-# Naming it '10pct' to clearly indicate it contains 1/10 (10%) of the data
-TARGET_DB = '../data/seoul_bike_2018_10pct.sqlite'
+SOURCE_DB = '../data/db/seoul_bike_2018.sqlite'
+# Naming it '5pct' to clearly indicate it contains 5% (1/20) of the data
+TARGET_DB = '../data/db/seoul_bike_2018_5pct.sqlite'
 
 def create_sampled_db():
     if os.path.exists(TARGET_DB):
@@ -25,8 +25,8 @@ def create_sampled_db():
     CREATE TABLE target_db.weather AS SELECT * FROM weather
     """)
     
-    print("Extracting 1/10 of rentals sorted by rent_time (Systematic Sampling)...")
-    # Using window function ROW_NUMBER() to sort by rent_time and pick every 10th row
+    print("Extracting 1/20 of rentals sorted by rent_time (Systematic Sampling, 5%)...")
+    # Using window function ROW_NUMBER() to sort by rent_time and pick every 20th row
     cursor.execute("""
     CREATE TABLE target_db.rentals AS
     SELECT 
@@ -37,7 +37,7 @@ def create_sampled_db():
         SELECT *, ROW_NUMBER() OVER (ORDER BY rent_time) as rn
         FROM rentals
     )
-    WHERE rn % 10 = 0
+    WHERE rn % 20 = 0
     """)
     
     print("Creating indexes on the sampled database...")
