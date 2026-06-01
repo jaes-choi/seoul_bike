@@ -1,0 +1,13 @@
+# Large Database Files
+*.sqlite
+*.sqlite3
+*.db
+
+# Large Compressed Raw Data
+*.zip
+*.tar.gz
+
+# Python caches
+__pycache__/
+*.py[cod]
+*$py.class
